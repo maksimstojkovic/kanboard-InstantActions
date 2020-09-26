@@ -1,6 +1,6 @@
 <?php
 //namespace Kanboard\Controller;
-namespace Kanboard\Plugin\Instantactions\Controller;
+namespace Kanboard\Plugin\InstantActions\Controller;
 use Kanboard\Controller\BaseController;
 use Kanboard\Core\Controller\AccessForbiddenException;
 use Kanboard\Model\TaskModel;
@@ -13,10 +13,10 @@ class TaskCancellationController extends BaseController
     public function cancel()
     {
 	$method = "asd";
-	$template = 'Instantactions:cancel';
+	$template = 'InstantActions:cancel';
 	$success_message = 'Task cancelled successfully.';
 	$failure_message = 'Unable to cancel this task.';
-	
+
 	$project = $this->getProject();
 	$task = $this->getTask();
 		//$values = array();
@@ -26,7 +26,7 @@ class TaskCancellationController extends BaseController
 	if ($this->request->getStringParam('confirmation') === 'yes') {
 	//die ($this->request->getStringParam('confirmation'));
             $this->checkCSRFParam();
-		
+
 		$values = array();
 		$valuesx = $task;
 		$tagsx = $this->taskTagModel->getTagsByTask($task['id']);
@@ -38,12 +38,12 @@ class TaskCancellationController extends BaseController
 			if( empty($this->projectMetadataModel->get($project['id'], 'cancelColumn')))
 			{
                 // cancelColumn is not set, setting default
-				$this->projectMetadataModel->save($project['id'], 
+				$this->projectMetadataModel->save($project['id'],
 				array('cancelColumn' => $this->columnModel->getLastColumnID($project['id'])));
 			}
 		}else{
 			// cancelColum does not exist
-			$this->projectMetadataModel->save($project['id'], 
+			$this->projectMetadataModel->save($project['id'],
 				array('cancelColumn' => $this->columnModel->getLastColumnID($project['id'])));
 		}
 		if ( $this->projectMetadataModel->exists($project['id'], 'cancelColor'))
@@ -52,16 +52,16 @@ class TaskCancellationController extends BaseController
 			{
                 // cancelColor is not set, setting default
 				$this->projectMetadataModel->save($project['id'],
-				       array('cancelColor' => $this->colorModel->find( $this->colorModel->getDefaultColor()))); 
+				       array('cancelColor' => $this->colorModel->find( $this->colorModel->getDefaultColor())));
 			}
 		}else{
 			// cancelColor does not exist
 			$this->projectMetadataModel->save($project['id'],
-				array('cancelColor' => $this->colorModel->find( $this->colorModel->getDefaultColor()))); 
+				array('cancelColor' => $this->colorModel->find( $this->colorModel->getDefaultColor())));
 		}
 
 
-		$values['color_id'] = $this->projectMetadataModel->get($project['id'], 'cancelColor'); 
+		$values['color_id'] = $this->projectMetadataModel->get($project['id'], 'cancelColor');
 		#$values['tags'] = /*$valuesx['tags']; */array('', 'cancelled')  ;
 		$values['time_spent'] = '0';
 		$values['time_estimated'] = '0';
@@ -87,7 +87,7 @@ class TaskCancellationController extends BaseController
             $this->response->redirect($this->helper->url->to('BoardViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id'])), true);
         } else {
             $this->response->html($this->template->render($template, array(
-                'task' => $task, 
+                'task' => $task,
             )));
         }
     }

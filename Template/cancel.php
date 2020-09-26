@@ -10,6 +10,6 @@
     <?= $this->modal->confirmButtons(
         'TaskCancellationController',
         'cancel',
-        array('plugin' => 'Instantactions', 'task_id' => $task['id'], 'project_id' => $task['project_id'], 'confirmation' => 'yes')
+        array('plugin' => 'InstantActions', 'task_id' => $task['id'], 'project_id' => $task['project_id'], 'confirmation' => 'yes')
     ) ?>
 </div>

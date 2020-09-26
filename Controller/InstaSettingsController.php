@@ -1,5 +1,5 @@
 <?php
-namespace Kanboard\Plugin\Instantactions\Controller;
+namespace Kanboard\Plugin\InstantActions\Controller;
 use Kanboard\Controller\BaseController;
 
 /**
@@ -27,12 +27,12 @@ class InstaSettingsController extends BaseController
 		    if( empty($this->projectMetadataModel->get($project['id'], 'cancelColumn')))
 		    {
                 // cancelColumn does not exist
-			    $this->projectMetadataModel->save($project['id'], 
+			    $this->projectMetadataModel->save($project['id'],
 				    array('cancelColumn' => $this->columnModel->getLastColumnID($project['id'])));
 		    }
 	    }else{
 		    // cancelColum does not exist
-		    $this->projectMetadataModel->save($project['id'], 
+		    $this->projectMetadataModel->save($project['id'],
 			    array('cancelColumn' => $this->columnModel->getLastColumnID($project['id'])));
 	    }
 	    if ( $this->projectMetadataModel->exists($project['id'], 'cancelColor'))
@@ -41,23 +41,23 @@ class InstaSettingsController extends BaseController
 		    {
                 // cancelColor does not exist
                 $this->projectMetadataModel->save($project['id'],
-				    array('cancelColor' => $this->colorModel->find( $this->colorModel->getDefaultColor()))); 
+				    array('cancelColor' => $this->colorModel->find( $this->colorModel->getDefaultColor())));
 		    }
 	    }else{
 		    // cancelColor does not exist
 		    $this->projectMetadataModel->save($project['id'],
-			    array('cancelColor' => $this->colorModel->find( $this->colorModel->getDefaultColor()))); 
+			    array('cancelColor' => $this->colorModel->find( $this->colorModel->getDefaultColor())));
 	    }
 
 	    $destinationColumn 	= $this->projectMetadataModel->get($project['id'], 'cancelColumn');
 	    $cancelColor 	= $this->projectMetadataModel->get($project['id'], 'cancelColor');
 	    $cancelTags  	= $this->projectMetadataModel->get($project['id'], 'cancelTags');
-		    
-
-	
 
 
-        $this->response->html($this->helper->layout->project('Instantactions:settings', array(
+
+
+
+        $this->response->html($this->helper->layout->project('InstantActions:settings', array(
 	//$this->response->html($this->helper->layout->project('project_edit/show', array(
 
             'owners' => $this->projectUserRoleModel->getAssignableUsersList($project['id'], true),

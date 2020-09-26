@@ -1,12 +1,12 @@
 <div class="instant-actions">
 <?php if ($this->user->hasProjectAccess('TaskModificationController', 'edit', $task['project_id'])): ?>
 	<?= $this->modal->large(
-			'edit', 
-			'', 
+			'edit',
+			'',
 			'TaskModificationController',
 			'edit',
 			array(
-				'task_id' => $task['id'], 
+				'task_id' => $task['id'],
 				'project_id' => $task['project_id']
 			)
 		) ?>
@@ -15,10 +15,10 @@
 	<?= $this->modal->confirm(
 			'trash-o',
 			'',
-			'TaskSuppressionController', 
-			'confirm', 
+			'TaskSuppressionController',
+			'confirm',
 			array(
-				'task_id' => $task['id'], 
+				'task_id' => $task['id'],
 				'project_id' => $task['project_id']
 			)
 	) ?>
@@ -30,20 +30,20 @@
 			 'times',
 			 '',
 			 'TaskStatusController',
-			 'close', 
+			 'close',
 			 array(
-				 'task_id' => $task['id'], 
+				 'task_id' => $task['id'],
 				 'project_id' => $task['project_id']
 			 )
 		 ) ?>
 	    <?php else: ?>
 		 <?= $this->modal->confirm(
 			 'check-square-o',
-			 '', 
-			 'TaskStatusController', 
-			 'open', 
+			 '',
+			 'TaskStatusController',
+			 'open',
 			 array(
-				 'task_id' => $task['id'], 
+				 'task_id' => $task['id'],
 				 'project_id' => $task['project_id']
 			 )
 		 ) ?>
@@ -52,13 +52,13 @@
 
 <?php if ($this->user->hasProjectAccess('TaskModificationController', 'edit', $task['project_id'])): ?>
 		<?= $this->modal->confirm(
-			'ban', 
-			'', 
-			'TaskCancellationController', 
-			'cancel', 
+			'ban',
+			'',
+			'TaskCancellationController',
+			'cancel',
 			array(
-				'plugin' => 'Instantactions', 
-				'task_id' => $task['id'], 
+				'plugin' => 'InstantActions',
+				'task_id' => $task['id'],
 				'project_id' => $task['project_id']
 			)
 		) ?>
@@ -70,28 +70,28 @@
 .fa.fa-times.fa-fw{
         color: gray;
 }
-.fa.fa-times.fa-fw:hover{ 
-        color: black; 
+.fa.fa-times.fa-fw:hover{
+        color: black;
 }
-  
+
 .fa.fa-ban.fa-fw{
         color: gray;
 }
-.fa.fa-ban.fa-fw:hover{ 
-        color: black; 
+.fa.fa-ban.fa-fw:hover{
+        color: black;
 }
- 
+
 .fa.fa-edit.fa-fw{
         color: gray;
 }
-.fa.fa-edit.fa-fw:hover{ 
-        color: black; 
+.fa.fa-edit.fa-fw:hover{
+        color: black;
 }
- 
+
 .fa.fa-trash-o.fa-fw{
         color: gray;
 }
-.fa.fa-trash-o.fa-fw:hover{ 
-        color: black; 
-} 
+.fa.fa-trash-o.fa-fw:hover{
+        color: black;
+}
 </style>
