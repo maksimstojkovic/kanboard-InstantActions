@@ -8,13 +8,13 @@ class Plugin extends Base
 {
     public function initialize()
     {
-        $this->template->hook->attach('template:board:task:footer', 'Instantactions:layout/footer');
-        $this->template->hook->attach('template:project:sidebar', 'Instantactions:layout/sidebar');
+        $this->template->hook->attach('template:board:task:footer', 'InstantActions:layout/footer');
+        $this->template->hook->attach('template:project:sidebar', 'InstantActions:layout/sidebar');
     }
 
     public function getPluginName()
     {
-        return 'Instantactions';
+        return 'InstantActions';
     }
 
     public function getPluginDescription()
@@ -34,7 +34,7 @@ class Plugin extends Base
 
     public function getPluginHomepage()
     {
-        return 'https://github.com/robre/Instantactions';
+        return 'https://github.com/juehv/kanboard-InstantActions';
     }
 }
 ?>
