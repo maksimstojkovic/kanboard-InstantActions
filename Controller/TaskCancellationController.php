@@ -65,7 +65,7 @@ class TaskCancellationController extends BaseController
 		#$values['tags'] = /*$valuesx['tags']; */array('', 'cancelled')  ;
 		$values['time_spent'] = '0';
 		$values['time_estimated'] = '0';
-		$tagid = $this->tagModel->findOrCreateTag($project["id"], "cancelled");
+		$tagid = $this->tagModel->findOrCreateTag($project["id"], "Cancelled");
 		$this->taskTagModel->associateTag($values["id"], $tagid);
 
 		///error_log("AAAAAAAAAAAAAAAAAAAAAA");
